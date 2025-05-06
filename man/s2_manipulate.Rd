@@ -9,14 +9,14 @@ s2_manipulate(zip_path, band_name, manipulation = "increase", increment = 0.1)
 \arguments{
 \item{zip_path}{Path to the zip file to be manipulated}
 
-\item{band_name}{Name of the S2 Band to be manipulated (official names)}
+\item{band_name}{Name of the S2 Band to be manipulated ("B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B10", "B11", "B12", "B8A", "SCL")}
 
-\item{manipulation}{Increase or decrease}
+\item{manipulation}{"increase" or "decrease"}
 
-\item{increment}{Ammount of change applied to the band}
+\item{increment}{Amount of change applied to the band}
 }
 \value{
-Zip folder in the original structure with manipulated Band within a folder structure
+Returns a zip folder in the original structure (and name) with manipulated Band within a folder structure named after the tile and manipulation
 }
 \description{
 Manipulate single Bands of Sentinel 2 images by a percentage

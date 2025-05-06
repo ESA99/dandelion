@@ -1,11 +1,11 @@
 #' Manipulate single Bands of Sentinel 2 images by a percentage
 #'
 #' @param zip_path Path to the zip file to be manipulated
-#' @param band_name Name of the S2 Band to be manipulated (official names)
-#' @param manipulation Increase or decrease
-#' @param increment Ammount of change applied to the band
+#' @param band_name Name of the S2 Band to be manipulated ("B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B10", "B11", "B12", "B8A", "SCL")
+#' @param manipulation "increase" or "decrease"
+#' @param increment Amount of change applied to the band
 #'
-#' @returns Zip folder in the original structure with manipulated Band within a folder structure
+#' @returns Returns a zip folder in the original structure (and name) with manipulated Band within a folder structure named after the tile and manipulation
 #' @export
 #'
 #'
@@ -88,6 +88,6 @@ s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increm
   # Clean up temporary files
   unlink(temp_dir, recursive = TRUE)
 
-  cat("\nProcess complete. Files saved in", modified_dir)
+  cat("\nFiles saved in", modified_dir)
 }
 
