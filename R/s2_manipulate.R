@@ -49,7 +49,7 @@ s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increm
 
 
 
-  unzip(zip_path, exdir = temp_dir)
+  zip::unzip(zip_path, exdir = temp_dir)
 
   files <- list.files(temp_dir, pattern = paste0(band_name, ".*\\.jp2$"), full.names = TRUE, recursive = TRUE) # load all the bands (tif files)
   jp2_files <- files[grepl(paste0("IMG_DATA.*/.*", band_name, ".*\\.jp2$"), files)]
@@ -70,7 +70,7 @@ s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increm
     # band_to_modify <- as.uint16(rast(jp2_files[i]))  # This keeps data in the range 0-65535, suitable for 16-bit data
     # band_to_modify <- clamp(band_to_modify, 0, 65535, values=TRUE)  # Ensures the values are within [0, 65535]
 
-    values(band_to_modify) <- as.integer(values(band_to_modify))
+    terra::values(band_to_modify) <- as.integer(terra::values(band_to_modify))
 
 
     terra::writeRaster(band_to_modify, jp2_files[i], overwrite = TRUE, filetype = "JP2OpenJPEG", datatype = "INT2U")
