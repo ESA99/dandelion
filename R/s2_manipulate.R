@@ -4,13 +4,14 @@
 #' @param band_name Name of the S2 Band to be manipulated ("B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B10", "B11", "B12", "B8A", "SCL")
 #' @param manipulation "increase" or "decrease"
 #' @param increment Amount of change applied to the band
+#' @param folder_structure Selects the type of folder structure to use. Default expects folders named after the S2 tile.
 #'
 #' @returns Returns a zip folder in the original structure (and name) with manipulated Band within a folder structure named after the tile and manipulation
 #' @export
 #'
 #'
 #'
-s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increment = 0.10) {
+s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increment = 0.10, folder_structure = "tilenames") {
 
   valid_bands <- c("B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B10", "B11", "B12", "B8A", "SCL")
   if (!(band_name %in% valid_bands)) {
@@ -37,7 +38,12 @@ s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increm
   tile <- sub("_", "", tile)  # remove the leading underscore
 
 
-  modified_dir <- file.path(dirname(zip_path), "modified", tile, subfolder_name)
+  if(folder_structure == "tilenames"){
+    modified_dir <- file.path(dirname(zip_path), "modified", subfolder_name)
+  } else {
+    modified_dir <- file.path(dirname(zip_path), "modified", tile, subfolder_name)
+  }
+
   if (!dir.exists(modified_dir)) {
     dir.create(modified_dir, recursive = TRUE)
   }
