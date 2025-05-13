@@ -70,7 +70,7 @@ s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increm
     } else if (manipulation == "decrease") {
       band_to_modify <- band_to_modify * (1 - increment)
     } else {
-      stop("Invalid manipulation type. Use 'increase' or 'decrease'.")
+      stop("Invalid manipulation type. Use 'increase' or 'decrease'. \n")
     }
 
     # band_to_modify <- as.uint16(rast(jp2_files[i]))  # This keeps data in the range 0-65535, suitable for 16-bit data

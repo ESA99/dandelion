@@ -3,12 +3,13 @@
 #' @param directory Parent directory of the model deployment
 #' @param tile Tile to be predicted
 #' @param year Year as character
+#' @param wcover Select year of the Worldcover data to be used. Valid values: c("2020", "2021"). Important: Data has to be available in /deploy_example/ESAworldcover/Year
 #'
 #' @returns bash script file
 #' @export
 #'
 #' @examples config_sh("C:/Users/esanc/Documents/", "T32ULC", "2020")
-config_sh <- function(directory, tile, year){
+config_sh <- function(directory, tile, year, wcover = "2020"){
 
   img_folder <- paste0("./deploy_example/sentinel2/", year, "/")
 
@@ -53,5 +54,5 @@ config_sh <- function(directory, tile, year){
 
 
   cat("Expects images in this folder:", img_folder,"\n")
-  cat("Note: Worldcover path are not set here. Edit run_tile_deploy_merge.sh to change.")
+  cat("Worldcover set to", wcover)
 }

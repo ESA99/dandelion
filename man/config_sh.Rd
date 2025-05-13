@@ -4,7 +4,7 @@
 \alias{config_sh}
 \title{Create bash config file for the canopy height model}
 \usage{
-config_sh(directory, tile, year)
+config_sh(directory, tile, year, wcover = "2020")
 }
 \arguments{
 \item{directory}{Parent directory of the model deployment}
@@ -12,6 +12,8 @@ config_sh(directory, tile, year)
 \item{tile}{Tile to be predicted}
 
 \item{year}{Year as character}
+
+\item{wcover}{Select year of the Worldcover data to be used. Valid values: c("2020", "2021"). Important: Data has to be available in /deploy_example/ESAworldcover/Year}
 }
 \value{
 bash script file
