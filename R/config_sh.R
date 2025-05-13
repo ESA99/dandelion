@@ -11,7 +11,7 @@
 #' @examples config_sh("C:/Users/esanc/Documents/", "T32ULC", "2020")
 config_sh <- function(directory, tile, year, wcover = "2020"){
 
-  img_folder <- paste0("./deploy_example/sentinel2/", year, "/")
+  img_folder <- paste0(directory,"/deploy_example/sentinel2/", year, "/")
 
   ### TXT file
   zip_files <- list.files(path = img_folder,
