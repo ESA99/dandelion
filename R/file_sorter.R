@@ -97,7 +97,7 @@ file_sorter <- function(path, by = "type") {
 
   # Summary
   log_table <- table(unlist(log))
-  cat("✅ Copy Summary:\n")
+  cat("Copy Summary:\n")
   cat(" - Total files copied:", length(log), "\n")
   if (length(log_table) > 0) {
     cat(" - Files sorted into:\n")

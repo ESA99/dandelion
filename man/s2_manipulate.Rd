@@ -13,15 +13,15 @@ s2_manipulate(
 )
 }
 \arguments{
-\item{zip_path}{Path to the zip file to be manipulated}
+\item{zip_path}{character. Path to the zip file to be manipulated.}
 
-\item{band_name}{Name of the S2 Band to be manipulated ("B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B10", "B11", "B12", "B8A", "SCL")}
+\item{band_name}{character. Name of the S2 Band to be manipulated ("B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B10", "B11", "B12", "B8A", "SCL")}
 
-\item{manipulation}{"increase" or "decrease"}
+\item{manipulation}{character. Type of manipulation to be performed. Valid values c("increase", "decrease").}
 
-\item{increment}{Amount of change applied to the band}
+\item{increment}{numeric. Amount of change applied to the band.}
 
-\item{folder_structure}{Selects the type of folder structure to use. Default expects folders named after the S2 tile.}
+\item{folder_structure}{character. Selects the type of folder structure to use. Default ("tilenames") expects folders named after the S2 tile within the directory.}
 }
 \value{
 Returns a zip folder in the original structure (and name) with manipulated Band within a folder structure named after the tile and manipulation

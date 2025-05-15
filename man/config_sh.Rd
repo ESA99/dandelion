@@ -7,13 +7,13 @@
 config_sh(directory, tile, year, wcover = "2020")
 }
 \arguments{
-\item{directory}{Parent directory of the model deployment}
+\item{directory}{character string. Parent directory of the model deployment.}
 
-\item{tile}{Tile to be predicted}
+\item{tile}{character string. Name of the Sentinel-2 Tile.}
 
-\item{year}{Year as character}
+\item{year}{character string. Year of the imagery used for prediction.}
 
-\item{wcover}{Select year of the Worldcover data to be used. Valid values: c("2020", "2021"). Important: Data has to be available in /deploy_example/ESAworldcover/Year}
+\item{wcover}{character string. Year of the Worldcover data to be used. Defaults to "2020". Valid values: c("2020", "2021"). Important: Data has to be available in ./deploy_example/ESAworldcover/Year}
 }
 \value{
 bash script file
