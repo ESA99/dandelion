@@ -1,9 +1,9 @@
 #' Create bash config file for the canopy height model
 #'
-#' @param directory Parent directory of the model deployment
-#' @param tile Tile to be predicted
-#' @param year Year as character
-#' @param wcover Select year of the Worldcover data to be used. Valid values: c("2020", "2021"). Important: Data has to be available in /deploy_example/ESAworldcover/Year
+#' @param directory character string. Parent directory of the model deployment.
+#' @param tile character string. Name of the Sentinel-2 Tile.
+#' @param year character string. Year of the imagery used for prediction.
+#' @param wcover character string. Year of the Worldcover data to be used. Defaults to "2020". Valid values: c("2020", "2021"). Important: Data has to be available in ./deploy_example/ESAworldcover/Year
 #'
 #' @returns bash script file
 #' @export
@@ -11,7 +11,7 @@
 #' @examples config_sh("C:/Users/esanc/Documents/", "T32ULC", "2020")
 config_sh <- function(directory, tile, year, wcover = "2020"){
 
-  img_folder <- paste0(directory,"/deploy_example/sentinel2/", year, "/")
+  img_folder <- paste0(directory,"/deploy_example/sentinel2/", year, "/",tile,"/")
 
   ### TXT file
   zip_files <- list.files(path = img_folder,
