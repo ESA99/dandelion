@@ -1,6 +1,6 @@
 Package: dandelion
 Title: File Handeling And Sentinel2 Processing
-Version: 0.0.3
+Version: 0.0.3.1
 Authors@R: 
     person("Emilio", "Sánchez", , "esanchez@uni-muenster.de", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0004-0348-5434"))
