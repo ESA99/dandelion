@@ -31,7 +31,7 @@ config_sh <- function(directory, tile, year, wcover = "2020"){
     GCHM_DEPLOY_PARENT_DIR = directory,
     YEAR = year,
     DEPLOY_IMAGE_PATH= paste0(img_folder, zip_files[1]),
-    GCHM_DEPLOY_DIR= paste0("./deploy_example/predictions/",year),
+    GCHM_DEPLOY_DIR= paste0("./deploy_example/predictions/",year,"/",tile),
     tile_name=tile
   )
 
