@@ -10,6 +10,7 @@
 #'
 #' @examples config_sh("C:/Users/esanc/Documents/", "T32ULC", "2020")
 config_sh <- function(directory, tile, year, wcover = "2020"){
+  directory <- normalizePath(directory)
 
   img_folder <- file.path(directory, "deploy_example","sentinel2", year, tile)
 
