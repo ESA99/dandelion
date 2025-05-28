@@ -26,8 +26,9 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
     stringsAsFactors = FALSE
   )
 
-  df$tile_name <- trimws(df$tile_name)
   base_folder <- normalizePath(base_folder)
+
+  df$tile_name <- trimws(df$tile_name)
   tile_folder <- file.path(base_folder, "deploy_example","sentinel2", year)
   df$tile_folder <- file.path(tile_folder, df$tile_name)
   df$out_name <- paste0(df$tile_name,"_",df$band,"_",df$increment,"_", ifelse(df$decrease == "False","I","D"))
@@ -49,6 +50,8 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
 
     df <- rbind(extra_row, df)
   }
+
+  df$out_dir <- file.path(base_folder, "final_results")
 
   # df <- df[dir.exists(df$tile_folder), ]
   return(df)
