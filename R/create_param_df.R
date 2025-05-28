@@ -47,7 +47,7 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
     extra_row$tile_folder <- file.path(tile_folder, t)
     extra_row$out_name <- paste0(t, "_original")
 
-    df <- rbind(df, extra_row)
+    df <- rbind(extra_row, df)
   }
 
   # df <- df[dir.exists(df$tile_folder), ]
