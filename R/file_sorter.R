@@ -44,7 +44,7 @@ file_sorter <- function(path, by = "type") {
     } else if (grepl("\\.zip$", entry, ignore.case = TRUE)) {
       unzip_dir <- tempfile(pattern = "unzipped_")
       dir.create(unzip_dir)
-      unzip(entry, exdir = unzip_dir)
+      zip::unzip(entry, exdir = unzip_dir)
       source_dir <- unzip_dir
       temp_dirs <- c(temp_dirs, unzip_dir)
     } else {
