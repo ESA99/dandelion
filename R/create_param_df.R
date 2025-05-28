@@ -37,8 +37,8 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
   for (t in unique(tiles)) {
     extra_row <- data.frame(
       tile_name = t,
-      band = NA,
-      decrease = NA,
+      band = "B01",
+      decrease = "True",
       increment = 0,
       year = year[1],  # or another default if length(year) > 1
       rootDIR = base_folder,
