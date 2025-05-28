@@ -19,15 +19,15 @@ create_param_df(
 
 \item{bands}{Vector of Sentinel Bands to be manipulated}
 
-\item{increments}{Increments by which the Bands should be increased or decreased.}
+\item{increments}{Integer vector. Increments by which the Bands should be increased or decreased.}
 
 \item{decrease}{Character. If "True" increments are decreased, if "False" increment is increased.}
 
-\item{year}{Year of the Senitnel-2 imagery.}
+\item{year}{Character. Year of the Senitnel-2 imagery.}
 
-\item{base_folder}{Directory that is used for the analysis.}
+\item{base_folder}{Character. Directory that is used for the analysis.}
 
-\item{worldcover}{Default is "2020".}
+\item{worldcover}{Character. Default is "2020".}
 }
 \value{
 A data frame with all possible combinations of variables.

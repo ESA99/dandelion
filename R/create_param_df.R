@@ -2,11 +2,11 @@
 #'
 #' @param tiles Vector of Senitnel-2 tile names. Ex: c("T32TMT")
 #' @param bands Vector of Sentinel Bands to be manipulated
-#' @param increments Increments by which the Bands should be increased or decreased.
+#' @param increments Integer vector. Increments by which the Bands should be increased or decreased.
 #' @param decrease Character. If "True" increments are decreased, if "False" increment is increased.
-#' @param year Year of the Senitnel-2 imagery.
-#' @param base_folder Directory that is used for the analysis.
-#' @param worldcover Default is "2020".
+#' @param year Character. Year of the Senitnel-2 imagery.
+#' @param base_folder Character. Directory that is used for the analysis.
+#' @param worldcover Character. Default is "2020".
 #'
 #' @returns A data frame with all possible combinations of variables.
 #' @export
