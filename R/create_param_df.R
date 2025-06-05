@@ -57,3 +57,9 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
   return(df)
 }
 
+# Format all increments to always keep two digits:
+# formatC(variables$increment, format = "f", digits = 2)
+
+# Extract the digits after the . in increment, while formating the numbers
+# sub("0\\.", "", formatC(variables$increment, format = "f", digits = 2))
+
