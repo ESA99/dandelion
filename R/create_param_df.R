@@ -28,16 +28,23 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
 
   base_folder <- normalizePath(base_folder)
 
+  # Build path to tile folder with the images
   df$tile_name <- trimws(df$tile_name)
   tile_folder <- file.path(base_folder, "deploy_example","sentinel2", year)
   df$tile_folder <- file.path(tile_folder, df$tile_name)
-  df$out_name <- paste0(df$tile_name,"_",df$band,"_",df$increment,"_", ifelse(df$decrease == "False","I","D"))
+
+  # Build output name that is used for saving/copying
+  df$out_name <- paste0(df$tile_name,"_",
+                        df$band,"_",
+                        # Extract the digits after the . in increment, while formatting all increments to always keep two digits:
+                        sub("0\\.", "", formatC(df$increment, format = "f", digits = 2)),"_",
+                        ifelse(df$decrease == "False","I","D"))
 
   # Add one row per tile for the original prediction (no manipulation)
   for (t in unique(tiles)) {
     extra_row <- data.frame(
       tile_name = t,
-      band = "B01",
+      band = df$band[1],
       decrease = "True",
       increment = 0,
       year = year[1],  # or another default if length(year) > 1
@@ -56,10 +63,4 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
   # df <- df[dir.exists(df$tile_folder), ]
   return(df)
 }
-
-# Format all increments to always keep two digits:
-# formatC(variables$increment, format = "f", digits = 2)
-
-# Extract the digits after the . in increment, while formating the numbers
-# sub("0\\.", "", formatC(variables$increment, format = "f", digits = 2))
 
