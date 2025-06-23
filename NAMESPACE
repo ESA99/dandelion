@@ -2,6 +2,7 @@
 
 export(config_sh)
 export(create_param_df)
+export(crop_raster_with_s2)
 export(file_sorter)
 export(s2_manipulate)
 export(worldcover_adjust)

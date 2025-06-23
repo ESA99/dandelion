@@ -19,7 +19,7 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
     ]
     WC_Tile <- normalizePath(WC_Tile)
 
-    WC_Tile_raster <- rast(WC_Tile)
+    WC_Tile_raster <- terra::rast(WC_Tile)
     original_coltab <- terra::coltab(WC_Tile_raster)
 
 
@@ -32,7 +32,7 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
     dir.create(tmp_dir)
     cat("Temp_dir created for unzipping and tif conversion:", tmp_dir, "\n")
     # Unzip contents to the temp directory
-    unzip(input_image[1], exdir = tmp_dir)
+    zip::unzip(input_image[1], exdir = tmp_dir)
     cat("Reference Image unzipped.\n")
 
     # List all files recursively inside the unzipped folder
@@ -60,28 +60,28 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
     changed <- FALSE  # Flag to track any change
 
     # Step 1: CRS
-    if (!crs(Input_Raster) == crs(WC_Tile_raster)) {
+    if (!terra::crs(Input_Raster) == terra::crs(WC_Tile_raster)) {
       message("Aligning Worldcover CRS...")
-      WC_Tile_raster <- project(WC_Tile_raster, Input_Raster)
+      WC_Tile_raster <- terra::project(WC_Tile_raster, Input_Raster)
       changed <- TRUE
     }
 
     # Step 2: Resolution
-    if (!isTRUE(all.equal(res(Input_Raster), res(WC_Tile_raster)))) {
+    if (!isTRUE(all.equal(terra::res(Input_Raster), terra::res(WC_Tile_raster)))) {
       message("Aligning Worldcover resolution...")
-      WC_Tile_raster <- resample(WC_Tile_raster, Input_Raster, method = "bilinear")
+      WC_Tile_raster <- terra::resample(WC_Tile_raster, Input_Raster, method = "bilinear")
       changed <- TRUE
     }
 
     # Step 3: Extent and dimension
-    if (!ext(Input_Raster) == ext(WC_Tile_raster) || !all(dim(Input_Raster)[1:2] == dim(WC_Tile_raster)[1:2])) {
+    if (!ext(Input_Raster) == terra::ext(WC_Tile_raster) || !all(dim(Input_Raster)[1:2] == dim(WC_Tile_raster)[1:2])) {
       message("Aligning Worldcover extent and dimensions...")
       WC_Tile_raster <- resample(WC_Tile_raster, Input_Raster, method = "bilinear")
       changed <- TRUE
     }
 
     # Final check
-    if (compareGeom(Input_Raster, WC_Tile_raster, stopOnError = FALSE)) {
+    if (terra::compareGeom(Input_Raster, WC_Tile_raster, stopOnError = FALSE)) {
       message("Worldcover is now fully aligned.")
     } else {
       warning("Worldcover is still not fully aligned. Check manually.")
@@ -94,7 +94,7 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
       # out_path <- "/home/emilio/global-canopy-height-model/workbench/test.tif" # Test path for debugging
       terra::coltab(WC_Tile_raster) <- original_coltab
       message("Saving aligned raster to: ", out_path)
-      writeRaster(WC_Tile_raster, out_path, overwrite = TRUE)
+      terra::writeRaster(WC_Tile_raster, out_path, overwrite = TRUE)
     } else {
       message("No changes made to Worldcover tile. Skipping save.")
     }
