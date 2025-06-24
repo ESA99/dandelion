@@ -17,3 +17,11 @@ Creates a new tif that is adjusted to the Sentinel2 Format and overwrites the or
 \description{
 Adjust worldcover image to the Structure of a Sentinel2 tile.
 }
+\details{
+The function expects to be used in context of the GCHM deployment were the variables "variables", "v" and "img_folder" are defined. Otherwise it will not work.
+}
+\examples{
+ world_raster <- rast(nrows = 500, ncols = 500, xmin = 0, xmax = 500, ymin = 0, ymax = 500)
+ wc_tile_status <- data.frame(tile_name = c("Tile_X"), edited = FALSE)
+ worldcover_adjust(world_raster, wc_tile_status)
+}

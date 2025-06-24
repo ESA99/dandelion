@@ -6,11 +6,14 @@
 #' @returns Creates a new tif that is adjusted to the Sentinel2 Format and overwrites the original input.
 #' @export
 #'
-#' @example world_raster <- rast(nrows = 500, ncols = 500, xmin = 0, xmax = 500, ymin = 0, ymax = 500)
-#'          wc_tile_status <- data.frame(tile_name = c("Tile_X"), edited = FALSE)
-#'          worldcover_adjust(world_raster, wc_tile_status)
+#' @details
+#' The function expects to be used in context of the GCHM deployment were the variables "variables", "v" and "img_folder" are defined. Otherwise it will not work.
+#'
+#' @examples
+#'  world_raster <- rast(nrows = 500, ncols = 500, xmin = 0, xmax = 500, ymin = 0, ymax = 500)
+#'  wc_tile_status <- data.frame(tile_name = c("Tile_X"), edited = FALSE)
+#'  worldcover_adjust(world_raster, wc_tile_status)
 worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = paths of the files, wc_tile_status = T/F if already edited/adjusted
-
 
   if (wc_tile_status$edited[wc_tile_status$tile_name == variables$tile_name[v]] == FALSE) {
 
@@ -74,9 +77,9 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
     }
 
     # Step 3: Extent and dimension
-    if (!ext(Input_Raster) == terra::ext(WC_Tile_raster) || !all(dim(Input_Raster)[1:2] == dim(WC_Tile_raster)[1:2])) {
+    if (!terra::ext(Input_Raster) == terra::ext(WC_Tile_raster) || !all(dim(Input_Raster)[1:2] == dim(WC_Tile_raster)[1:2])) {
       message("Aligning Worldcover extent and dimensions...")
-      WC_Tile_raster <- resample(WC_Tile_raster, Input_Raster, method = "bilinear")
+      WC_Tile_raster <- terra::resample(WC_Tile_raster, Input_Raster, method = "bilinear")
       changed <- TRUE
     }
 
@@ -105,3 +108,5 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
 
 }
 
+# Declare global variables for R CMD check
+utils::globalVariables(c("variables", "v", "img_folder")) # Declare global variables for R CMD check

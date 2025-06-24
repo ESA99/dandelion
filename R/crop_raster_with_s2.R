@@ -20,12 +20,12 @@ crop_raster_with_s2 <- function(raster_dir, s2_dir, out_dir, out_basename, filet
 
   for (i in 1:length(rasters)) {
 
-    cat("===== Raster",i,"=====")
+    cat("====== Raster", paste0(i,"/",length(rasters)),"======\n")
     wc_rast <- terra::rast(rasters[i])
     s2_rast <- terra::rast(s2_tile[i])
 
     colour_table <- terra::coltab(wc_rast)
-    cat("Colourtable extracted.\n")
+    cat("Rasters read and colourtable extracted. Adjusting CRS...\n")
 
     wc_trans <- terra::project(wc_rast, terra::crs(s2_rast))
     cat("CRS adjusted. Converting S2 scene to polygon...\n")

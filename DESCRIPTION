@@ -1,11 +1,11 @@
 Package: dandelion
 Title: File Handeling And Sentinel2 Processing
-Version: 0.0.5
+Version: 0.0.5.1
 Authors@R: 
     person("Emilio", "Sánchez", , "esanchez@uni-muenster.de", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0004-0348-5434"))
 Description: Random collection of usefull functions (to me).
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

@@ -22,5 +22,5 @@ bash script file
 Create bash config file for the canopy height model
 }
 \examples{
-config_sh("C:/Users/esanc/Documents/", "T32ULC", "2020")
+config_sh("./Users/esanc/Documents/", "T32ULC", "2020")
 }

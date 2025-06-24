@@ -1,2 +1,4 @@
 ^dandelion\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^dandelion-Ex\.timings$

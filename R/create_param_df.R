@@ -11,7 +11,12 @@
 #' @returns A data frame with all possible combinations of variables.
 #' @export
 #'
-#' @examples variables <- create_param_df(tiles = c("T32TMT"), bands = c("B02","B08"),increments = c(0.05, 0.1, 0.15, 0.2), decrease = c("False"), year = "2020", base_folder = "/home/emilio/wip/global-canopy-height-model")
+#' @examples variables <- create_param_df(tiles = c("T32TMT"),
+#'                                        bands = c("B02","B08"),
+#'                                        increments = c(0.05, 0.1, 0.15, 0.2),
+#'                                        decrease = c("False"),
+#'                                        year = "2020",
+#'                                        base_folder = "./home/emilio/wip/global-canopy-height-model")
 
 create_param_df <- function(tiles, bands, increments, decrease, year, base_folder, worldcover = "2020") {
 
