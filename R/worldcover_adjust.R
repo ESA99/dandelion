@@ -2,6 +2,9 @@
 #'
 #' @param wcover_tiles Character. File path to the worldcover image to be adjusted. CRS, extent and resolution gets modified if needed.
 #' @param wc_tile_status Data frame with Tile names and status of the Worldcover image Tile (if it already was processed). Included for looping to not perform the same calculation again and again.
+#' @param df Data frame. variables data frame from the gchm context
+#' @param w Numeric. v from the deployment loop (GCHM)
+#' @param img_dir Character. img_folder from the gchm loop
 #'
 #' @returns Creates a new tif that is adjusted to the Sentinel2 Format and overwrites the original input.
 #' @export
@@ -10,15 +13,18 @@
 #' The function expects to be used in context of the GCHM deployment were the variables "variables", "v" and "img_folder" are defined. Otherwise it will not work.
 #'
 #' @examples
-#'  world_raster <- rast(nrows = 500, ncols = 500, xmin = 0, xmax = 500, ymin = 0, ymax = 500)
+#'  world_raster <- terra::rast(nrows = 500, ncols = 500, xmin = 0, xmax = 500, ymin = 0, ymax = 500)
 #'  wc_tile_status <- data.frame(tile_name = c("Tile_X"), edited = FALSE)
-#'  worldcover_adjust(world_raster, wc_tile_status)
-worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = paths of the files, wc_tile_status = T/F if already edited/adjusted
+#'  df <- data.frame(c(1,2), c(3,4))
+#'  w <- 5
+#'  img_dir <- /home/"
+#'  worldcover_adjust(world_raster, wc_tile_status, variables, w, img_dir)
+worldcover_adjust <- function(wcover_tiles, wc_tile_status, df, w, img_dir){ # wcover_tiles = paths of the files, wc_tile_status = T/F if already edited/adjusted
 
-  if (wc_tile_status$edited[wc_tile_status$tile_name == variables$tile_name[v]] == FALSE) {
+  if (wc_tile_status$edited[wc_tile_status$tile_name == df$tile_name[w]] == FALSE) {
 
     WC_Tile <-  wcover_tiles[
-      grepl(substr(variables$tile_name[v],2,6), wcover_tiles)
+      grepl(substr(df$tile_name[w],2,6), wcover_tiles)
     ]
     WC_Tile <- normalizePath(WC_Tile)
 
@@ -26,7 +32,7 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
     original_coltab <- terra::coltab(WC_Tile_raster)
 
 
-    input_image <- list.files(path = img_folder, pattern = paste0(".*", variables$tile_name[v], ".*\\.zip$"), full.names = T)
+    input_image <- list.files(path = img_dir, pattern = paste0(".*", df$tile_name[w], ".*\\.zip$"), full.names = T)
     # Make sure a file was found
     if (length(input_image) == 0) stop("No matching ZIP file found.")
 
@@ -108,5 +114,4 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status){ # wcover_tiles = pa
 
 }
 
-# Declare global variables for R CMD check
-utils::globalVariables(c("variables", "v", "img_folder")) # Declare global variables for R CMD check
+

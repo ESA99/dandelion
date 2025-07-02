@@ -4,12 +4,18 @@
 \alias{worldcover_adjust}
 \title{Adjust worldcover image to the Structure of a Sentinel2 tile.}
 \usage{
-worldcover_adjust(wcover_tiles, wc_tile_status)
+worldcover_adjust(wcover_tiles, wc_tile_status, df, w, img_dir)
 }
 \arguments{
 \item{wcover_tiles}{Character. File path to the worldcover image to be adjusted. CRS, extent and resolution gets modified if needed.}
 
 \item{wc_tile_status}{Data frame with Tile names and status of the Worldcover image Tile (if it already was processed). Included for looping to not perform the same calculation again and again.}
+
+\item{df}{Data frame. variables data frame from the gchm context}
+
+\item{w}{Numeric. v from the deployment loop (GCHM)}
+
+\item{img_dir}{Character. img_folder from the gchm loop}
 }
 \value{
 Creates a new tif that is adjusted to the Sentinel2 Format and overwrites the original input.
@@ -19,9 +25,4 @@ Adjust worldcover image to the Structure of a Sentinel2 tile.
 }
 \details{
 The function expects to be used in context of the GCHM deployment were the variables "variables", "v" and "img_folder" are defined. Otherwise it will not work.
-}
-\examples{
- world_raster <- rast(nrows = 500, ncols = 500, xmin = 0, xmax = 500, ymin = 0, ymax = 500)
- wc_tile_status <- data.frame(tile_name = c("Tile_X"), edited = FALSE)
- worldcover_adjust(world_raster, wc_tile_status)
 }

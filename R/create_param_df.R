@@ -28,6 +28,7 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
     year = year,
     rootDIR = base_folder,
     WC_year = worldcover,
+    original = FALSE,
     stringsAsFactors = FALSE
   )
 
@@ -55,6 +56,7 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
       year = year[1],  # or another default if length(year) > 1
       rootDIR = base_folder,
       WC_year = worldcover,
+      original = TRUE,
       stringsAsFactors = FALSE
     )
     extra_row$tile_folder <- file.path(tile_folder, t)
