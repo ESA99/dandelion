@@ -4,7 +4,7 @@
 \name{dandelion-package}
 \alias{dandelion}
 \alias{dandelion-package}
-\title{dandelion: Neural-Network Deployment Tools for Geodata}
+\title{dandelion: Deployment Tools for Geodata and ML-preparation}
 \description{
 The \strong{dandelion} package provides functions, supporting the systematical deployment of neural networks using geodata.
 It is designed to work in the context of GCHM deployments, making it easy to preprocess,

@@ -1,6 +1,6 @@
 Package: dandelion
-Title: Neural-Network Deployment Tools for Geodata
-Version: 0.1.0
+Title: Deployment Tools for Geodata and ML-preparation
+Version: 0.1.1
 Authors@R: 
     person("Emilio", "Sánchez", , "esanchez@uni-muenster.de", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0004-0348-5434"))
