@@ -3,8 +3,8 @@ citHeader("To cite dandelion in publications use:")
 bibentry(
   bibtype = "Manual",
   title   = "Neural-Network Deployment Tools for Geodata",
-  author  = person("Emilio", "Sanchez"),
+  author  = person("Emilio", "Sánchez"),
   year    = "2025",
   url     = "https://github.com/ESA99/dandelion",
-  textVersion = "Emilio Sanchez (2025). Neural-Network Deployment Tools for Geodata. https://github.com/ESA99/dandelion"
+  textVersion = "Emilio Sánchez (2025). Neural-Network Deployment Tools for Geodata. https://github.com/ESA99/dandelion"
 )
