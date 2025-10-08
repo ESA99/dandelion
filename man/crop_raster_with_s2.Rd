@@ -2,7 +2,7 @@
 % Please edit documentation in R/crop_raster_with_s2.R
 \name{crop_raster_with_s2}
 \alias{crop_raster_with_s2}
-\title{Title}
+\title{Crop Raster with Sentinal-2}
 \usage{
 crop_raster_with_s2(
   raster_dir,
@@ -27,5 +27,5 @@ crop_raster_with_s2(
 Rasters as tif cropped to extend of S2-images.
 }
 \description{
-Title
+Crop Raster with Sentinal-2
 }

@@ -41,5 +41,5 @@ variables <- create_param_df(tiles = c("T32TMT"),
                                        increments = c(0.05, 0.1, 0.15, 0.2),
                                        decrease = c("False"),
                                        year = "2020",
-                                       base_folder = "./home/emilio/wip/global-canopy-height-model")
+                                       base_folder = tempdir())
 }

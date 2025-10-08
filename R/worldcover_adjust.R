@@ -12,13 +12,6 @@
 #' @details
 #' The function expects to be used in context of the GCHM deployment were the variables "variables", "v" and "img_folder" are defined. Otherwise it will not work.
 #'
-#' @examples
-#'  world_raster <- terra::rast(nrows = 500, ncols = 500, xmin = 0, xmax = 500, ymin = 0, ymax = 500)
-#'  wc_tile_status <- data.frame(tile_name = c("Tile_X"), edited = FALSE)
-#'  df <- data.frame(c(1,2), c(3,4))
-#'  w <- 5
-#'  img_dir <- /home/"
-#'  worldcover_adjust(world_raster, wc_tile_status, variables, w, img_dir)
 worldcover_adjust <- function(wcover_tiles, wc_tile_status, df, w, img_dir){ # wcover_tiles = paths of the files, wc_tile_status = T/F if already edited/adjusted
 
   if (wc_tile_status$edited[wc_tile_status$tile_name == df$tile_name[w]] == FALSE) {

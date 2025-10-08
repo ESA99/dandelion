@@ -9,8 +9,6 @@
 #' @returns Returns a zip folder in the original structure (and name) with manipulated Band within a folder structure named after the tile and manipulation
 #' @export
 #'
-#'
-#'
 s2_manipulate <- function(zip_path, band_name, manipulation = "increase", increment = 0.10, folder_structure = "tilenames") {
 
   valid_bands <- c("B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B8A", "B09", "B10", "B11", "B12", "B8A", "SCL")

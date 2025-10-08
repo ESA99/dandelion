@@ -1,4 +1,4 @@
-#' Title
+#' Crop Raster with Sentinal-2
 #'
 #' @param raster_dir Character. Filepath to directory with the rasters to be clipped. Expects name to contain S2-Tilename.
 #' @param s2_dir  Character. Filepath to directorywith the S2-scenes (just one jp200 or tif, not whole folder.) Must match the number of inout rasters and be named similar, as they are processed by order.

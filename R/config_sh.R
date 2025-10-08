@@ -8,7 +8,7 @@
 #' @returns bash script file
 #' @export
 #'
-#' @examples config_sh("./Users/esanc/Documents/", "T32ULC", "2020")
+#' @examples config_sh(tempdir(), "T32ULC", "2020")
 config_sh <- function(directory, tile, year, wcover = "2020"){
   directory <- normalizePath(directory)
 
