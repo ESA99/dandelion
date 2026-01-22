@@ -17,7 +17,7 @@ create_param_df(
 \arguments{
 \item{tiles}{Vector of Senitnel-2 tile names. Ex: c("T32TMT")}
 
-\item{bands}{Vector of Sentinel Bands to be manipulated}
+\item{bands}{List of Sentinel Bands to be manipulated. Each Vector in that list will be treated as one item. For single bands either insert only a Vector (without list()) or inseide list() a Vector for each list.}
 
 \item{increments}{Integer vector. Increments by which the Bands should be increased or decreased.}
 
@@ -37,7 +37,7 @@ Create a data frame of parameter combinations
 }
 \examples{
 variables <- create_param_df(tiles = c("T32TMT"),
-                                       bands = c("B02","B08"),
+                                       bands = list(c("B02","B08"), c("B03")),
                                        increments = c(0.05, 0.1, 0.15, 0.2),
                                        decrease = c("False"),
                                        year = "2020",

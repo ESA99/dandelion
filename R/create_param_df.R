@@ -1,7 +1,7 @@
 #' Create a data frame of parameter combinations
 #'
 #' @param tiles Vector of Senitnel-2 tile names. Ex: c("T32TMT")
-#' @param bands Vector of Sentinel Bands to be manipulated
+#' @param bands List of Sentinel Bands to be manipulated. Each Vector in that list will be treated as one item. For single bands either insert only a Vector (without list()) or inseide list() a Vector for each list.
 #' @param increments Integer vector. Increments by which the Bands should be increased or decreased.
 #' @param decrease Character. If "True" increments are decreased, if "False" increment is increased.
 #' @param year Character. Year of the Senitnel-2 imagery.
@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples variables <- create_param_df(tiles = c("T32TMT"),
-#'                                        bands = c("B02","B08"),
+#'                                        bands = list(c("B02","B08"), c("B03")),
 #'                                        increments = c(0.05, 0.1, 0.15, 0.2),
 #'                                        decrease = c("False"),
 #'                                        year = "2020",
@@ -41,7 +41,7 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
 
   # Build output name that is used for saving/copying
   df$out_name <- paste0(df$tile_name,"_",
-                        df$band,"_",
+                        vapply(df$band, function(b) paste(b, collapse = "-"), character(1)), "_",
                         # Extract the digits after the . in increment, while formatting all increments to always keep two digits:
                         sub("0\\.", "", formatC(df$increment, format = "f", digits = 2)),"_",
                         ifelse(df$decrease == "False","I","D"))
@@ -50,7 +50,7 @@ create_param_df <- function(tiles, bands, increments, decrease, year, base_folde
   for (t in unique(tiles)) {
     extra_row <- data.frame(
       tile_name = t,
-      band = df$band[1],
+      band = I(list(df$band[[1]])),
       decrease = "True",
       increment = 0,
       year = year[1],  # or another default if length(year) > 1
