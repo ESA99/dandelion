@@ -28,6 +28,7 @@ to be defined in the deployment context when using some functions.
 \describe{
 \item{\code{create_param_df()}}{Create a data frame of parameter combinations.}
 \item{\code{worldcover_adjust()}}{Adjusts Worldcover images to match Sentinel2 structure.}
+\item{\code{global_point_grid()}}{Creates a point grid over earth's land masses.}
 }
 }
 

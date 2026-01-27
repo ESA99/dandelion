@@ -22,14 +22,16 @@
 #' \describe{
 #'   \item{\code{create_param_df()}}{Create a data frame of parameter combinations.}
 #'   \item{\code{worldcover_adjust()}}{Adjusts Worldcover images to match Sentinel2 structure.}
-#' }
+#'   \item{\code{global_point_grid()}}{Creates a point grid over earth's land masses.}
+#'  }
 #'
 #' @section Preparation functions:
 #' \describe{
 #'   \item{\code{crop_raster_with_s2()}}{Crop Raster with Sentinal-2 imagery.}
 #'   \item{\code{config_sh()}}{Create bash config file for the canopy height model.}
 #'   \item{\code{s2_manipulate()}}{Manipulate single Bands of Sentinel 2 images by a percentage.}
-#'   }
+#'  }
+#'
 #' @section Further useful functions:
 #' \describe{
 #'   \item{\code{bibtex_citation_session()}}{Creates Bibtex citation text file of Session.}
