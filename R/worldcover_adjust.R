@@ -14,7 +14,7 @@
 #'
 worldcover_adjust <- function(wcover_tiles, wc_tile_status, df, w, img_dir){ # wcover_tiles = paths of the files, wc_tile_status = T/F if already edited/adjusted
 
-  if (wc_tile_status$edited[wc_tile_status$tile == df$tile[w]] == FALSE) {
+  if (wc_tile_status$edited[wc_tile_status$wc_tile == df$tile[w]] == FALSE) {
 
     WC_Tile <-  wcover_tiles[
       grepl(substr(df$tile[w],2,6), wcover_tiles)
