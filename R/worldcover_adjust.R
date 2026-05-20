@@ -14,10 +14,10 @@
 #'
 worldcover_adjust <- function(wcover_tiles, wc_tile_status, df, w, img_dir){ # wcover_tiles = paths of the files, wc_tile_status = T/F if already edited/adjusted
 
-  if (wc_tile_status$edited[wc_tile_status$tile_name == df$tile_name[w]] == FALSE) {
+  if (wc_tile_status$edited[wc_tile_status$tile == df$tile[w]] == FALSE) {
 
     WC_Tile <-  wcover_tiles[
-      grepl(substr(df$tile_name[w],2,6), wcover_tiles)
+      grepl(substr(df$tile[w],2,6), wcover_tiles)
     ]
     WC_Tile <- normalizePath(WC_Tile)
 
@@ -25,7 +25,7 @@ worldcover_adjust <- function(wcover_tiles, wc_tile_status, df, w, img_dir){ # w
     original_coltab <- terra::coltab(WC_Tile_raster)
 
 
-    input_image <- list.files(path = img_dir, pattern = paste0(".*", df$tile_name[w], ".*\\.zip$"), full.names = T)
+    input_image <- list.files(path = img_dir, pattern = paste0(".*", df$tile[w], ".*\\.zip$"), full.names = T)
     # Make sure a file was found
     if (length(input_image) == 0) stop("No matching ZIP file found.")
 
